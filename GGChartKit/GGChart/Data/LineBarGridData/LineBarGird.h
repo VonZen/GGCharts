@@ -59,6 +59,11 @@
 @property (nonatomic, strong) NSArray <NSNumber *> *dashPattern;
 
 
+/**
+ * 是否显示内部线
+ */
+@property (nonatomic, assign) BOOL showInnerLine;
+
 #pragma mark - 轴设置
 
 /**

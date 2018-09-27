@@ -62,6 +62,7 @@ static const void * radarLayer = @"radarLayer";
     _polyRenderer.titleSpacing = [radarDrawConfig titleSpacing];
     _polyRenderer.isCircle = [radarDrawConfig isCirlre];
     _polyRenderer.borderWidth = [radarDrawConfig borderWidth];
+    _polyRenderer.fillColor = radarDrawConfig.fillColor;
 }
 
 /** 更新视图 */
@@ -90,12 +91,33 @@ static const void * radarLayer = @"radarLayer";
 }
 
 /**
+ * 绘制外圈圆点
+ */
+- (void)drawCirclePoint:(id <RadarAbstract>)drawData{
+    if ([drawData shapeRadius] > 0) {
+        GGShapeCanvas * shapeCanvas = [self getGGShapeCanvasEqualFrame];
+        shapeCanvas.strokeColor = [drawData strockColor].CGColor;
+        shapeCanvas.lineWidth = [drawData shapeLineWidth];
+        shapeCanvas.fillColor = [drawData shapeFillColor].CGColor;
+        
+        CGMutablePathRef ref = CGPathCreateMutable();
+        
+        for (NSInteger i = 0; i < [drawData datas].count; i++) {
+            
+            GGPathAddCircle(ref, GGCirclePointMake([drawData points][i], [drawData shapeRadius]));
+        }
+        
+        shapeCanvas.path = ref;
+        CGPathRelease(ref);
+    } 
+}
+
+/**
  * 绘制雷达小圆点
  */
 - (void)drawRadarShapeLayer:(id <RadarAbstract>)drawData
 {
     if ([drawData shapeRadius] > 0) {
-        
         GGShapeCanvas * shapeCanvas = [self getGGShapeCanvasEqualFrame];
         shapeCanvas.strokeColor = [drawData strockColor].CGColor;
         shapeCanvas.lineWidth = [drawData shapeLineWidth];

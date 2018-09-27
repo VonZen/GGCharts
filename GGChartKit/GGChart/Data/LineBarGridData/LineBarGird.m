@@ -30,6 +30,7 @@
         _axisLineColor = [UIColor blackColor];
         _axisLableFont = [UIFont systemFontOfSize:10];
         _axisLableColor = [UIColor blackColor];
+        _showInnerLine = YES;
     }
     
     return self;

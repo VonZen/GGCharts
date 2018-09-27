@@ -162,6 +162,12 @@
             
             CGRect rect = CGRectMake(point.x - size.width / 2, point.y - size.height / 2, size.width, size.height);
             [string drawAtPoint:rect.origin withAttributes:dictionary];
+            
+            CGContextSetStrokeColorWithColor(ctx,C_HEX(0xF88E47).CGColor);
+            CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
+            CGContextSetLineWidth(ctx, 1.0);
+            CGContextAddArc(ctx, line.end.x,line.end.y, 2, 0, 2*M_PI, 0);
+            CGContextDrawPath(ctx, kCGPathFillStroke);
         }
         
         UIGraphicsPopContext();

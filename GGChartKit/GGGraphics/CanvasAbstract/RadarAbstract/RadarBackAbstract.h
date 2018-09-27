@@ -22,6 +22,11 @@
 @property (nonatomic, strong, readonly) UIColor * strockColor;
 
 /**
+ * 背景色
+ */
+@property (nonatomic, strong, readonly) UIColor * fillColor;
+
+/**
  * 字符串颜色
  */
 @property (nonatomic, strong, readonly) UIColor * stringColor;

@@ -38,6 +38,63 @@
 {
     [super drawChart];
     
+    if (_progressAbstract.linear) {
+        [self drawLine];
+    }else{
+        [self drawCircle];
+    }
+}
+
+- (void)drawLine{
+    CGFloat start = self.gg_left;
+    CGFloat end = self.gg_right;
+    CGFloat lineCapRoundOffset = [_progressAbstract lineWidth]/2;
+    
+    CGMutablePathRef ref = CGPathCreateMutable();
+    CGPathMoveToPoint(ref, nil, self.gg_left + lineCapRoundOffset, self.gg_centerY);
+    CGPathAddLineToPoint(ref, nil, self.gg_right - lineCapRoundOffset, self.gg_centerY);
+    
+    GGShapeCanvas * shapeLayer = [self getGGShapeCanvasEqualFrame];
+    shapeLayer.lineCap = kCALineCapRound;
+    shapeLayer.lineWidth = [_progressAbstract lineWidth];
+    shapeLayer.path = ref;
+    shapeLayer.fillColor = [UIColor clearColor].CGColor;
+    shapeLayer.strokeColor = [_progressAbstract progressBackColor].CGColor;
+    CGPathRelease(ref);
+    
+    CGFloat progressEnd = start + (end - start) * ([_progressAbstract value] / [_progressAbstract maxValue]);
+    CGMutablePathRef progersRef = CGPathCreateMutable();
+    CGPathMoveToPoint(progersRef, nil, self.gg_left + lineCapRoundOffset, self.gg_centerY);
+    CGPathAddLineToPoint(progersRef, nil, progressEnd - lineCapRoundOffset, self.gg_centerY);
+    
+    _progressCanvas = [self getGGShapeCanvasEqualFrame];
+    _progressCanvas.lineCap = kCALineCapRound;
+    _progressCanvas.lineWidth = [_progressAbstract lineWidth];
+    _progressCanvas.path = progersRef;
+    _progressCanvas.fillColor = [UIColor clearColor].CGColor;
+    _progressCanvas.strokeColor = [UIColor whiteColor].CGColor;
+    CGPathRelease(progersRef);
+    
+    if ([_progressAbstract progressGradientColor].count > 0) {
+        CAGradientLayer * gradientLayer = [self getCAGradientEqualFrame]; 
+        gradientLayer.mask = _progressCanvas; 
+        gradientLayer.colors = [[_progressAbstract progressGradientColor] getCGColorsArray];
+        gradientLayer.locations = [_progressAbstract gradientLocations];
+        
+        if ([_progressAbstract gradientCurve] == GradientX) { 
+            gradientLayer.startPoint = CGPointMake(start, .5f);
+            gradientLayer.endPoint = CGPointMake([_progressAbstract value] / [_progressAbstract maxValue], .5f);
+        }
+        else {
+            gradientLayer.startPoint = CGPointMake(.5f, start);
+            gradientLayer.endPoint = CGPointMake(.5f, [_progressAbstract value] / [_progressAbstract maxValue]);
+        }
+    }
+    
+    [self setNeedsDisplay];
+}
+
+- (void)drawCircle{
     CGPoint center = CGPointMake(self.gg_width / 2, self.gg_height / 2);
     
     CGFloat start = [_progressAbstract arcRange].max;

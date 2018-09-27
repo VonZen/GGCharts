@@ -14,6 +14,11 @@
 @protocol ProgressAbstract <NSObject>
 
 /**
+ * 是否为线性
+ */
+@property (nonatomic, assign) BOOL linear;
+
+/**
  * 最大值
  */
 @property (nonatomic, assign, readonly) CGFloat maxValue;

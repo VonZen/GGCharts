@@ -21,8 +21,7 @@
     CGContextAddRect(ctx, _rect);
     CGContextStrokePath(ctx);
     
-    if (_fillColor) {
- 
+    if (_fillColor) { 
         CGContextSetFillColorWithColor(ctx, _fillColor.CGColor);
         CGContextFillRect(ctx, _rect);
         CGContextStrokePath(ctx);

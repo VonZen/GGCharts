@@ -26,8 +26,7 @@
     free(dashPattern);
     
     CGContextMoveToPoint(ctx, _line.start.x, _line.start.y);
-    CGContextAddLineToPoint(ctx, _line.end.x,_line.end.y);
-
+    CGContextAddLineToPoint(ctx, _line.end.x,_line.end.y); 
     CGContextStrokePath(ctx);
 }
 

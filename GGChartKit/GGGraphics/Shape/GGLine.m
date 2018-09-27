@@ -132,15 +132,50 @@ NSArray * GGPathLinesUpspringAnimation(CGPoint * points, size_t size, CGFloat y)
         basePoints[i] = CGPointMake(points[i].x, y);
     }
     
-    CGMutablePathRef ref = CGPathCreateMutable();
-    CGPathAddLines(ref, NULL, basePoints, size);
-    [ary addObject:(__bridge id)ref];
-    CGPathRelease(ref);
+//    CGMutablePathRef ref = CGPathCreateMutable();
+//    CGPathAddLines(ref, NULL, basePoints, size);
+//    [ary addObject:(__bridge id)ref];
+//    CGPathRelease(ref);
     
-    ref = CGPathCreateMutable();
-    CGPathAddLines(ref, NULL, points, size);
-    [ary addObject:(__bridge id)ref];
-    CGPathRelease(ref);
+//    ref = CGPathCreateMutable();
+//    CGPathAddLines(ref, NULL, points, size);
+//    [ary addObject:(__bridge id)ref];
+//    CGPathRelease(ref);
+    
+    //绘制曲线
+    UIBezierPath *path1=[UIBezierPath bezierPath];
+    CGPoint prePoint;
+    CGPoint nowPoint;
+    for (int i=0; i< size; i++) {
+        if (i==0) {
+            prePoint = basePoints[i];
+            [path1 moveToPoint:prePoint];
+        }else{
+            nowPoint = basePoints[i];
+
+            [path1 addCurveToPoint:nowPoint controlPoint1:CGPointMake((prePoint.x+nowPoint.x)/2.0, prePoint.y) controlPoint2:CGPointMake((prePoint.x+nowPoint.x)/2.0, nowPoint.y)];
+
+            prePoint=nowPoint;
+        }
+    }
+     [ary addObject:(__bridge id)path1.CGPath];
+    
+    UIBezierPath *path2=[UIBezierPath bezierPath];
+    CGPoint prePoint1;
+    CGPoint nowPoint1;
+    for (int i=0; i< size; i++) {
+        if (i==0) {
+            prePoint1 = points[i];
+            [path2 moveToPoint:prePoint1];
+        }else{
+            nowPoint1 = points[i];
+            
+            [path2 addCurveToPoint:nowPoint1 controlPoint1:CGPointMake((prePoint1.x+nowPoint1.x)/2.0, prePoint1.y) controlPoint2:CGPointMake((prePoint1.x+nowPoint1.x)/2.0, nowPoint1.y)];
+            
+            prePoint1=nowPoint1;
+        }
+    }
+    [ary addObject:(__bridge id)path2.CGPath];
     
     return ary;
 }
@@ -209,20 +244,67 @@ NSArray * GGPathFillLinesUpspringAnimation(CGPoint * points, size_t size, CGFloa
         
         basePoints[i] = CGPointMake(points[i].x, y);
     }
+    //填充直线区域
+//    CGMutablePathRef ref = CGPathCreateMutable();
+//    CGPathAddLines(ref, NULL, basePoints, size);
+//    CGPathAddLineToPoint(ref, NULL, basePoints[size - 1].x, y);
+//    CGPathAddLineToPoint(ref, NULL, basePoints[0].x, y);
+//    [ary addObject:(__bridge id)ref];
+//    CGPathRelease(ref);
+//    
+//    ref = CGPathCreateMutable();
+//    CGPathAddLines(ref, NULL, points, size);
+//    CGPathAddLineToPoint(ref, NULL, points[size - 1].x, y);
+//    CGPathAddLineToPoint(ref, NULL, points[0].x, y);
+//    [ary addObject:(__bridge id)ref];
+//    CGPathRelease(ref);
     
-    CGMutablePathRef ref = CGPathCreateMutable();
-    CGPathAddLines(ref, NULL, basePoints, size);
-    CGPathAddLineToPoint(ref, NULL, basePoints[size - 1].x, y);
-    CGPathAddLineToPoint(ref, NULL, basePoints[0].x, y);
-    [ary addObject:(__bridge id)ref];
-    CGPathRelease(ref);
+    //填充曲线区域
+    CGPoint lineFirstPoint = basePoints[0];
+    CGPoint lineLastPoint = basePoints[size - 1];
+
+    UIBezierPath *path=[UIBezierPath bezierPath];
+    CGPoint prePoint;
+    CGPoint nowPoint;
+    for (int i=0; i<size; i++) {
+        if (i==0) {
+            prePoint = basePoints[i];
+            [path moveToPoint:prePoint];
+        }else{
+            nowPoint = basePoints[i];
+
+            [path addCurveToPoint:nowPoint controlPoint1:CGPointMake((prePoint.x+nowPoint.x)/2.0, prePoint.y) controlPoint2:CGPointMake((prePoint.x+nowPoint.x)/2.0, nowPoint.y)];
+
+            prePoint=nowPoint;
+        }
+    }
+    [path addLineToPoint:CGPointMake(lineLastPoint.x, y)];
+    [path addLineToPoint:CGPointMake(lineFirstPoint.x, y)];
+    [path closePath];
+    [ary addObject:(__bridge id)path.CGPath];
     
-    ref = CGPathCreateMutable();
-    CGPathAddLines(ref, NULL, points, size);
-    CGPathAddLineToPoint(ref, NULL, points[size - 1].x, y);
-    CGPathAddLineToPoint(ref, NULL, points[0].x, y);
-    [ary addObject:(__bridge id)ref];
-    CGPathRelease(ref);
+    CGPoint lineFirstPoint1 = points[0];
+    CGPoint lineLastPoint1 = points[size - 1];
+    
+    UIBezierPath *path1=[UIBezierPath bezierPath];
+    CGPoint prePoint1;
+    CGPoint nowPoint1;
+    for (int i=0; i<size; i++) {
+        if (i==0) {
+            prePoint1 = points[i];
+            [path1 moveToPoint:prePoint1];
+        }else{
+            nowPoint1 = points[i];
+            
+            [path1 addCurveToPoint:nowPoint1 controlPoint1:CGPointMake((prePoint1.x+nowPoint1.x)/2.0, prePoint1.y) controlPoint2:CGPointMake((prePoint1.x+nowPoint1.x)/2.0, nowPoint1.y)];
+            
+            prePoint1 = nowPoint1;
+        }
+    }
+    [path1 addLineToPoint:CGPointMake(lineLastPoint1.x, y)];
+    [path1 addLineToPoint:CGPointMake(lineFirstPoint1.x, y)];
+    [path1 closePath];
+    [ary addObject:(__bridge id)path1.CGPath];
     
     return ary;
 }

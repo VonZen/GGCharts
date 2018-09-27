@@ -28,6 +28,11 @@
 @property (nonatomic, strong) UIColor * strockColor;
 
 /**
+ * 背景色
+ */
+@property (nonatomic, strong) UIColor * fillColor;
+
+/**
  * 分割数
  */
 @property (nonatomic, assign) NSUInteger splitCount;

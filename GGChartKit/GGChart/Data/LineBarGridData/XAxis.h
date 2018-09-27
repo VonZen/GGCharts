@@ -59,7 +59,7 @@
 /**
  * 是否显示轴网格线
  */
-@property (nonatomic, assign) BOOL showSplitLine;
+@property (nonatomic, assign) BOOL showSplitLine; 
 
 /**
  * 是否显示查价标
