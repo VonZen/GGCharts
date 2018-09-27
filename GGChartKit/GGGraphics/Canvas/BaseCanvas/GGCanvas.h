@@ -88,4 +88,6 @@
  */
 - (void)removeAllRenderer;
 
+
++ (UIBezierPath *)drawCurveLine:(CGPoint *)points withSize:(NSUInteger)size;
 @end

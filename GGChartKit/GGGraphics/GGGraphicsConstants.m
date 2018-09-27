@@ -21,4 +21,4 @@ CGPoint const GGRatioCenterRight = {1, 0};
 
 CGPoint const GGRatioBottomLeft = {-1, 1};
 CGPoint const GGRatioBottomCenter = {0, 1};
-CGPoint const GGRatioBottomRight = {1, 1};
+CGPoint const GGRatioBottomRight = {1, 1}; 

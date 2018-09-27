@@ -10,6 +10,7 @@
 #import "DLineScaler.h"
 #include <objc/runtime.h>
 #import "LineAnimationsManager.h"
+#import "GGCanvas.h"
 
 @interface LineCanvas ()
 
@@ -88,30 +89,15 @@
     shape.fillColor = [UIColor clearColor].CGColor;
     shape.lineDashPattern = [lineAbstract dashPattern];
     
-      //绘制直线
-//    CGMutablePathRef path = CGPathCreateMutable();
-//    CGPathAddLines(path, NULL, [lineAbstract points], [lineAbstract dataAry].count);
-//    shape.path = path;
-//    CGPathRelease(path);
-//
-    
-    //绘制曲线
-    UIBezierPath *path=[UIBezierPath bezierPath];
-    CGPoint prePoint;
-    CGPoint nowPoint;
-    for (int i=0; i<[lineAbstract dataAry].count; i++) {
-        if (i==0) {
-            prePoint = [lineAbstract points][i];
-            [path moveToPoint:prePoint];
-        }else{
-            nowPoint = [lineAbstract points][i];
-            
-            [path addCurveToPoint:nowPoint controlPoint1:CGPointMake((prePoint.x+nowPoint.x)/2.0, prePoint.y) controlPoint2:CGPointMake((prePoint.x+nowPoint.x)/2.0, nowPoint.y)];
-            
-            prePoint=nowPoint;
-        }
+    if ([lineAbstract isCurve]) {
+        UIBezierPath *path= [GGCanvas drawCurveLine:[lineAbstract points] withSize:[lineAbstract dataAry].count];
+        shape.path = path.CGPath;
+    }else{
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathAddLines(path, NULL, [lineAbstract points], [lineAbstract dataAry].count);
+        shape.path = path;
+        CGPathRelease(path);
     }
-    shape.path = path.CGPath;
     
     SET_ASSOCIATED_ASSIGN(lineAbstract, lineLayer, shape);
 }
@@ -197,35 +183,21 @@
         CGPoint lineFirstPoint = [lineAbstract points][0];
         CGPoint lineLastPoint = [lineAbstract points][lineAbstract.dataAry.count - 1];
         
-        //填充直线区域
-//        CGMutablePathRef path = CGPathCreateMutable();
-//        CGPathAddLines(path, NULL, [lineAbstract points], lineAbstract.dataAry.count);
-//        CGPathAddLineToPoint(path, NULL, lineLastPoint.x, [lineAbstract bottomYPix]);
-//        CGPathAddLineToPoint(path, NULL, lineFirstPoint.x, [lineAbstract bottomYPix]);
-//        CGPathCloseSubpath(path);
-//        shape.path = path;
-//        CGPathRelease(path);
-        
-        //填充曲线区域
-        UIBezierPath *path=[UIBezierPath bezierPath];
-        CGPoint prePoint;
-        CGPoint nowPoint;
-        for (int i=0; i<[lineAbstract dataAry].count; i++) {
-            if (i==0) {
-                prePoint = [lineAbstract points][i];
-                [path moveToPoint:prePoint];
-            }else{
-                nowPoint = [lineAbstract points][i];
-                
-                [path addCurveToPoint:nowPoint controlPoint1:CGPointMake((prePoint.x+nowPoint.x)/2.0, prePoint.y) controlPoint2:CGPointMake((prePoint.x+nowPoint.x)/2.0, nowPoint.y)];
-                
-                prePoint=nowPoint;
-            }
+        if ([lineAbstract isCurve]) {
+            UIBezierPath *path = [GGCanvas drawCurveLine:[lineAbstract points] withSize:[lineAbstract dataAry].count];
+            [path addLineToPoint:CGPointMake(lineLastPoint.x, [lineAbstract bottomYPix])];
+            [path addLineToPoint:CGPointMake(lineFirstPoint.x, [lineAbstract bottomYPix])];
+            [path closePath];
+            shape.path = path.CGPath;
+        }else{
+            CGMutablePathRef path = CGPathCreateMutable();
+            CGPathAddLines(path, NULL, [lineAbstract points], lineAbstract.dataAry.count);
+            CGPathAddLineToPoint(path, NULL, lineLastPoint.x, [lineAbstract bottomYPix]);
+            CGPathAddLineToPoint(path, NULL, lineFirstPoint.x, [lineAbstract bottomYPix]);
+            CGPathCloseSubpath(path);
+            shape.path = path;
+            CGPathRelease(path);
         }
-        [path addLineToPoint:CGPointMake(lineLastPoint.x, [lineAbstract bottomYPix])];
-        [path addLineToPoint:CGPointMake(lineFirstPoint.x, [lineAbstract bottomYPix])];
-        [path closePath];
-        shape.path = path.CGPath;
         
         SET_ASSOCIATED_ASSIGN(lineAbstract, lineFillLayer, shape);
         
@@ -254,6 +226,5 @@
 
 #pragma mark - Lazy
 
-GGLazyGetMethod(LineAnimationsManager, lineAnimations);
-
+GGLazyGetMethod(LineAnimationsManager, lineAnimations); 
 @end

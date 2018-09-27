@@ -315,7 +315,7 @@ CG_EXTERN NSArray * GGPathFillLinesStretchAnimation(CGPoint * points, size_t siz
  *
  * @return 路径动画数组
  */
-CG_EXTERN NSArray * GGPathLinesUpspringAnimation(CGPoint * points, size_t size, CGFloat y);
+CG_EXTERN NSArray * GGPathLinesUpspringAnimation(CGPoint * points, size_t size, CGFloat y, BOOL isCurve);
 
 /**
  * 折线填充于某一y坐标展开动画
@@ -326,7 +326,7 @@ CG_EXTERN NSArray * GGPathLinesUpspringAnimation(CGPoint * points, size_t size, 
  *
  * @return 路径动画数组
  */
-CG_EXTERN NSArray * GGPathFillLinesUpspringAnimation(CGPoint * points, size_t size, CGFloat y);
+CG_EXTERN NSArray * GGPathFillLinesUpspringAnimation(CGPoint * points, size_t size, CGFloat y, BOOL isCurve);
 
 /**
  * NSValue 扩展

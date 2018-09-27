@@ -53,6 +53,10 @@
  */
 @property (nonatomic, assign, readonly) CGFloat shapeLineWidth;
 
+/**
+ * 折线是否为曲线
+ */
+@property (nonatomic, assign, readonly) BOOL isCurve;
 
 #pragma mark - 折线填充
 

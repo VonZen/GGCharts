@@ -404,6 +404,26 @@
     CGContextRestoreGState(ctx);
 }
 
++ (UIBezierPath *)drawCurveLine:(CGPoint *)points withSize:(NSUInteger)size{
+    UIBezierPath *path=[UIBezierPath bezierPath];
+    CGPoint prePoint;
+    CGPoint nowPoint;
+    for (int i=0; i<size; i++) {
+        if (i==0) {
+            prePoint = points[i];
+            [path moveToPoint:prePoint];
+        }else{
+            nowPoint = points[i];
+            
+            [path addCurveToPoint:nowPoint controlPoint1:CGPointMake((prePoint.x+nowPoint.x)/2.0, prePoint.y) controlPoint2:CGPointMake((prePoint.x+nowPoint.x)/2.0, nowPoint.y)];
+            
+            prePoint=nowPoint;
+        }
+    }
+    
+    return path;
+}
+
 #pragma mark - Getter
 
 /**
