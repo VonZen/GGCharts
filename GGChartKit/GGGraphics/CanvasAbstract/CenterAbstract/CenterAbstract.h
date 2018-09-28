@@ -10,6 +10,7 @@
 #define CenterAbstract_h
 
 #import "NumberAbstract.h"
+#import "GGPolygon.h"
 
 @protocol CenterLableAbstract <NumberAbstract>
 

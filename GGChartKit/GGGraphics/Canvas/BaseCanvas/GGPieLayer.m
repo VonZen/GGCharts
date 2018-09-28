@@ -7,6 +7,7 @@
 //
 
 #import "GGPieLayer.h"
+#import "NSArray+GGGraphics.h"
 
 typedef enum : NSUInteger {
     LineStrokeStart,

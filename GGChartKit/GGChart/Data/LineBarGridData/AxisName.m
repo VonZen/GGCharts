@@ -7,6 +7,7 @@
 //
 
 #import "AxisName.h"
+#import "NumberAxisAbstract.h"
 
 @interface AxisName () <NumberAxisNameAbstract>
 

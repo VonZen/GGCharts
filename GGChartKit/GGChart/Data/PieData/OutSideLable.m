@@ -7,6 +7,7 @@
 //
 
 #import "OutSideLable.h"
+#import "GGGraphicsConstants.h"
 
 @implementation OutSideLable
 

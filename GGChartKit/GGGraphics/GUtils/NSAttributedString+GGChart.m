@@ -7,6 +7,8 @@
 //
 
 #import "NSAttributedString+GGChart.h"
+#import <UIKit/UIKit.h>
+#import "GGGraphicsConstants.h"
 
 @implementation NSMutableAttributedString (GGChart)
 

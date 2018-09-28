@@ -6,7 +6,9 @@
 //  Copyright © 2017年 I really is a farmer. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "LineDrawAbstract.h"
+#import "GGGraphicsConstants.h"
 
 @interface LineAnimationsManager : NSObject
 

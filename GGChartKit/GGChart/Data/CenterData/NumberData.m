@@ -7,6 +7,7 @@
 //
 
 #import "NumberData.h"
+#import "GGGraphicsConstants.h"
 
 @implementation NumberData
 

@@ -8,6 +8,8 @@
 
 #import "PieCanvas.h"
 #import <objc/runtime.h>
+#import "GGCircleRenderer.h"
+#import "UIView+GGFrame.h"
 
 @interface PieCanvas ()
 

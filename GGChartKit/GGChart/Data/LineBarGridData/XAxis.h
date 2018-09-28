@@ -6,7 +6,8 @@
 //  Copyright © 2017年 I really is a farmer. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "GGLine.h"
 
 @interface XAxis : NSObject
 

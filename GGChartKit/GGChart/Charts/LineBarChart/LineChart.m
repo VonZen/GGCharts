@@ -10,6 +10,7 @@
 #import "LineCanvas.h"
 #import "GridBackCanvas.h"
 #import "QueryCanvas.h"
+#import "UIView+GGFrame.h"
 
 @interface LineChart ()
 

@@ -7,6 +7,8 @@
 //
 
 #import "LineBarDataSet.h"
+#import "LineCanvasAbstract.h"
+#import "BarCanvasAbstract.h"
 
 @interface LineBarDataSet () <LineCanvasAbstract, BarCanvasAbstract>
 

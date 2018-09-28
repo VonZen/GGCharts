@@ -10,6 +10,7 @@
 #import "PieDrawAbstract.h"
 #import "PieData.h"
 #import "CenterData.h"
+#import "PieCanvasAbstract.h"
 
 @interface PieDataSet : NSObject <PieCanvasAbstract>
 

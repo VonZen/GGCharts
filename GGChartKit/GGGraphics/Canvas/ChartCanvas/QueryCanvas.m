@@ -7,6 +7,8 @@
 //
 
 #import "QueryCanvas.h"
+#import "GGStringRenderer.h"
+#import "GGLineRenderer.h"
 
 @interface QueryCanvas ()
 

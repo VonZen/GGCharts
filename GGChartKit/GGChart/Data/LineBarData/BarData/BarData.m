@@ -7,6 +7,8 @@
 //
 
 #import "BarData.h"
+#import "BarDrawAbstract.h"
+#import "DBarScaler.h"
 
 @interface BarData () <BarDrawAbstract>
 {

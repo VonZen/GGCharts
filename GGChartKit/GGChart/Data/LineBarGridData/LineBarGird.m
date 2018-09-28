@@ -7,6 +7,8 @@
 //
 
 #import "LineBarGird.h"
+#import "GridAbstract.h"
+#import "GGGraphicsConstants.h"
 
 @interface LineBarGird () <GridAbstract>
 

@@ -9,6 +9,8 @@
 #ifndef NumberAbstract_h
 #define NumberAbstract_h
 
+#import <UIKit/UIKit.h>
+
 @protocol NumberAbstract <NSObject>
 
 /**

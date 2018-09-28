@@ -9,6 +9,8 @@
 #ifndef KLineAbstract_h
 #define KLineAbstract_h
 
+#import <UIKit/UIKit.h>
+
 @protocol KLineAbstract <NSObject>
 
 - (CGFloat)ggOpen;                      ///< 开盘价

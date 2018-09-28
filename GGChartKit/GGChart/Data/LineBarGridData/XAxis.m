@@ -7,6 +7,7 @@
 //
 
 #import "XAxis.h"
+#import "LableAxisAbstract.h"
 
 @interface XAxis () <LableAxisAbstract>
 

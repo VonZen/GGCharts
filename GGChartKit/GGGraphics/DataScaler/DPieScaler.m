@@ -7,6 +7,7 @@
 //
 
 #import "DPieScaler.h"
+#import "NSArray+GGGraphics.h"
 
 @interface DPieScaler ()
 

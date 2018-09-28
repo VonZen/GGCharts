@@ -7,6 +7,7 @@
 //
 
 #import "ProgressData.h"
+#import "GGPie.h"
 
 @implementation ProgressData
 

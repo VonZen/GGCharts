@@ -7,6 +7,8 @@
 //
 
 #import "YAxis.h"
+#import "NumberAxisAbstract.h"
+#import "DLineScaler.h"
 
 @interface YAxis () <NumberAxisAbstract>
 

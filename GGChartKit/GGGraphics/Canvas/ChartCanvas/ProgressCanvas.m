@@ -7,6 +7,8 @@
 //
 
 #import "ProgressCanvas.h"
+#import "UIView+GGFrame.h"
+#import "NSArray+GGGraphics.h"
 
 @interface ProgressCanvas ()
 

@@ -7,6 +7,8 @@
 //
 
 #import "GGGridRenderer.h"
+#import "GGLine.h"
+#import "GGGraphicsConstants.h"
 
 @interface GGGridRenderer ()
 

@@ -10,6 +10,7 @@
 #define ProgressAbstract_h
 
 #import "NumberAbstract.h"
+#import "GGSizeRange.h"
 
 @protocol ProgressAbstract <NSObject>
 

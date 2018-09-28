@@ -10,6 +10,8 @@
 #import <objc/runtime.h>
 #import "NSObject+FireBlock.h"
 #import "GGPieLayer.h"
+#import "PieCanvasAbstract.h"
+#import "GGShapeCanvas.h"
 
 #pragma mark - PieAnimationManager
 

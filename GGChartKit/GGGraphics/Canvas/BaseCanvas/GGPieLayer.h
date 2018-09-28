@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "PieDrawAbstract.h"
+#import "GGNumberRenderer.h"
 
 @interface GGPieLayer : CALayer
 

@@ -7,6 +7,7 @@
 //
 
 #import "CenterCanvas.h"
+#import "GGCircleRenderer.h"
 
 @implementation CenterCanvas
 

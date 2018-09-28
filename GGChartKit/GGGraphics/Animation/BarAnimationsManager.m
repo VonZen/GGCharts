@@ -8,6 +8,10 @@
 
 #import "BarAnimationsManager.h"
 #include <objc/runtime.h>
+#import "Animator.h"
+#import "BarDrawAbstract.h"
+#import "GGRect.h"
+#import "GGNumberRenderer.h"
 
 @interface BarAnimationsManager ()
 

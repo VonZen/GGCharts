@@ -10,6 +10,7 @@
 #define PieDrawAbstract_h
 
 #include "PieOutSideLableAbstract.h"
+#import "GGPie.h"
 
 typedef enum : NSUInteger {
     RoseNormal,

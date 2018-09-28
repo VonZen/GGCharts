@@ -8,6 +8,7 @@
 
 #ifndef BaseAxisAbstract_h
 #define BaseAxisAbstract_h
+#import "GGLine.h"
 
 @protocol BaseAxisAbstract <NSObject>
 

@@ -10,6 +10,7 @@
 
 #import "XAxis.h"
 #import "YAxis.h"
+#import "BaseLineBarAbstract.h"
 
 @interface LineBarQuery : NSObject
 

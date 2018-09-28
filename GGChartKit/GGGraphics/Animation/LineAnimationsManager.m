@@ -9,6 +9,13 @@
 #import "LineAnimationsManager.h"
 #import <objc/runtime.h>
 #import "NSObject+FireBlock.h"
+#import "Animator.h"
+#import "GGGraphicsConstants.h"
+#import "UIView+GGFrame.h"
+#import "LineDrawAbstract.h"
+#import "BarDrawAbstract.h"
+#import "GGNumberRenderer.h"
+#import "GGShapeCanvas.h"
 
 @interface LineAnimationsManager ()
 

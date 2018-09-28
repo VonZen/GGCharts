@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DLineScaler.h"
 
 typedef enum : NSUInteger {
     ScalerAxisLeft = 0,         ///< 左边轴

@@ -8,6 +8,7 @@
 
 #import "InnerLable.h"
 #import "PieInnerLableAbstract.h"
+#import "GGGraphicsConstants.h"
 
 @interface InnerLable ()
 

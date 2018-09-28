@@ -7,6 +7,7 @@
 //
 
 #import "LineBarQuery.h"
+#import "QueryAbstract.h"
 
 @interface LineBarQuery () <QueryAbstract>
 

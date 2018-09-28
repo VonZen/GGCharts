@@ -10,6 +10,7 @@
 #import "BarCanvas.h"
 #import "GridBackCanvas.h"
 #import "QueryCanvas.h"
+#import "UIView+GGFrame.h"
 
 @interface BarChart ()
 

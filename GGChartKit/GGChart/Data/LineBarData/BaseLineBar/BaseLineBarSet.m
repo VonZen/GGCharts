@@ -7,6 +7,8 @@
 //
 
 #import "BaseLineBarSet.h"
+#import "NSArray+GGGraphics.h"
+#import "NumberAxisAbstract.h"
 
 @interface BaseLineBarSet ()
 

@@ -6,7 +6,7 @@
 //  Copyright © 2017年 I really is a farmer. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 #define RardarIndicatorMake(title, maxs) [RadarIndicatorData indicatorWithTitle:title max:maxs]
 

@@ -7,6 +7,7 @@
 //
 
 #import "GGPie.h"
+#import "GGCircle.h"
 
 #define SEC_FRAME       60 * 60
 

@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
 /**
  * 柱状图动画枚举
  */

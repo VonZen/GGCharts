@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AxisName.h"
+#import "GGLine.h"
 
 @interface YAxis : NSObject
 

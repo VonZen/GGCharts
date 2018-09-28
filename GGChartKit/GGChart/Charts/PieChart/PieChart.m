@@ -9,6 +9,8 @@
 #import "PieChart.h"
 #import "PieCanvas.h"
 #import "CenterCanvas.h"
+#import "PieCanvasAbstract.h"
+#import "UIView+GGFrame.h"
 
 @interface PieChart ()
 

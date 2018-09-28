@@ -7,6 +7,9 @@
 //
 
 #import "GridBackCanvas.h"
+#import "GGAxisRenderer.h"
+#import "GGStringRenderer.h"
+#import "GGLineRenderer.h"
 
 @interface GridBackCanvas ()
 

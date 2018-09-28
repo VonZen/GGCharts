@@ -7,6 +7,7 @@
 //
 
 #import "ProgressChart.h"
+#import "UIView+GGFrame.h"
 
 @implementation ProgressChart
 

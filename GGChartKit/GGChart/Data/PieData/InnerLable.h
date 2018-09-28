@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NumberData.h"
+#import "PieInnerLableAbstract.h"
 
 @interface InnerLable : NumberData <PieInnerLableAbstract>
 

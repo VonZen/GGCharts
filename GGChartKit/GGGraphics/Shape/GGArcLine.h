@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreGraphics/CoreGraphics.h>
+#import "GGGraphicsConstants.h"
+#import "GGLine.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
